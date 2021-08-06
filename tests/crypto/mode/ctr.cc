@@ -10,10 +10,10 @@ using namespace ::testing;
 // TODO: Add DEBUG defines and spot check deeper at private variables/block transitions
 TEST(Modes, CTREncryptDecryptZeroesForAll)
 {
-    RC6<BlockWordSize::BLOCK_128> cipher{};
-    ECB<RC6<BlockWordSize::BLOCK_128>> ecb(cipher);
+    RC6<BlockSize::BLOCK_128> cipher{};
+    ECB<RC6<BlockSize::BLOCK_128>> ecb(cipher);
     // EW, we desperately need to clean this up
-    CTR<ECB<RC6<BlockWordSize::BLOCK_128>>> ctr(ecb, block_byte_size<BlockWordSize::BLOCK_128>());
+    CTR<ECB<RC6<BlockSize::BLOCK_128>>> ctr(ecb, block_byte_size<BlockSize::BLOCK_128>());
     const vector<u8> key(32);
     const vector<u8> EXPECTED(256);
     vector<u8> plain = EXPECTED;
@@ -27,10 +27,10 @@ TEST(Modes, CTREncryptDecryptZeroesForAll)
 
 TEST(Modes, CTREncryptDecryptZeroesForAllParallel)
 {
-    RC6<BlockWordSize::BLOCK_128> cipher{};
-    ECB<RC6<BlockWordSize::BLOCK_128>> ecb(cipher);
+    RC6<BlockSize::BLOCK_128> cipher{};
+    ECB<RC6<BlockSize::BLOCK_128>> ecb(cipher);
     // EW, we desperately need to clean this up
-    CTR<ECB<RC6<BlockWordSize::BLOCK_128>>> ctr(ecb, block_byte_size<BlockWordSize::BLOCK_128>());
+    CTR<ECB<RC6<BlockSize::BLOCK_128>>> ctr(ecb, block_byte_size<BlockSize::BLOCK_128>());
     const vector<u8> key(32);
     const vector<u8> EXPECTED(256);
     vector<u8> plain = EXPECTED;
@@ -44,10 +44,10 @@ TEST(Modes, CTREncryptDecryptZeroesForAllParallel)
 
 TEST(Modes, CTREncryptBlockExternallyForStream)
 {
-    RC6<BlockWordSize::BLOCK_128> cipher{};
-    ECB<RC6<BlockWordSize::BLOCK_128>> ecb(cipher);
+    RC6<BlockSize::BLOCK_128> cipher{};
+    ECB<RC6<BlockSize::BLOCK_128>> ecb(cipher);
     // EW, we desperately need to clean this up
-    CTR<ECB<RC6<BlockWordSize::BLOCK_128>>> ctr(ecb, block_byte_size<BlockWordSize::BLOCK_128>());
+    CTR<ECB<RC6<BlockSize::BLOCK_128>>> ctr(ecb, block_byte_size<BlockSize::BLOCK_128>());
 
     const vector<u8> key(16);
     const vector<u8> EXPECTED(16);

@@ -15,7 +15,7 @@ typedef uint32_t u32;
 typedef uint64_t u64;
 
 /// Block size constant container
-namespace BlockWordSize
+namespace BlockSize
 {
     typedef u32 BLOCK_128;
     typedef u64 BLOCK_256;

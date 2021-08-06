@@ -9,8 +9,8 @@ using namespace ::testing;
 // TODO: Add DEBUG defines to spot check deeper
 TEST(Modes, ECBEncryptDecryptZeroesForAll)
 {
-    RC6<BlockWordSize::BLOCK_128> cipher = RC6<BlockWordSize::BLOCK_128>();
-    ECB<RC6<BlockWordSize::BLOCK_128>> ecb(cipher);
+    RC6<BlockSize::BLOCK_128> cipher = RC6<BlockSize::BLOCK_128>();
+    ECB<RC6<BlockSize::BLOCK_128>> ecb(cipher);
     const vector<u8> key(32);
     const vector<u8> EXPECTED(256);
     vector<u8> plain = EXPECTED;
