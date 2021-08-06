@@ -11,8 +11,6 @@
 
 #include "types.h"
 
-using namespace std;
-
 class log
 {
 public:

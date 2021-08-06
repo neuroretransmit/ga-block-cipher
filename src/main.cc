@@ -14,7 +14,6 @@ int main()
 	cout << "S1: '" << s1 << "'\n";
 	cout << "S2: '" << s2 << "'\n";
     cout << "OSA distance: " << osa_distance << "\n\n";
-    
     // Force population to evolve encoding to 'ev0lv3', verification of GA only
     auto dna1 = DNA("DNA_#2");
     auto dna2 = DNA("DNA_#1");

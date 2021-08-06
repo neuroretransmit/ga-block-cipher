@@ -4,6 +4,6 @@
 
 int util::random::ascii()
 {
-        return ' ' + rand() % (' ' - '~' + 1);
+    return ' ' + rand() % (' ' - '~' + 1);
 }
 
