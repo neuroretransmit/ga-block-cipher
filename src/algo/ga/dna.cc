@@ -42,6 +42,24 @@ void DNA::mutate()
 	cout << this->encoding << endl << endl;
 }
 
+void DNA::mutate(DNA& other)
+{
+	cout << "Mutation:\t";
+    size_t encoding_len = this->encoding.length();
+    size_t other_encoding_len = other.encoding.length();
+    
+    if (encoding_len < other_encoding_len) {
+        encoding += util::random::ascii();
+    } else if (other_encoding_len < encoding_len) {
+        encoding = encoding.substr(0, encoding_len - 1);
+    }
+    
+	size_t flip_idx = rand() % encoding_len;
+	this->encoding[flip_idx] = util::random::ascii();
+    
+	cout << this->encoding << endl << endl;
+}
+
 unsigned DNA::get_fitness()
 {
 	return this->fitness;

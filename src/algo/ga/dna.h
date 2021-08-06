@@ -15,6 +15,7 @@ public:
 	bool operator< (const DNA& other) const;
 	DNA crossover(DNA dna);
 	void mutate();
+    void mutate(DNA& other);
 	unsigned get_fitness();
 	void rate_fitness(string target);
 };
