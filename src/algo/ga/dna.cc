@@ -1,5 +1,6 @@
 #include "dna.h"
 
+#include <cstdlib>
 #include <iostream>
 
 #include "../damerau_levenshtein.h"
@@ -16,7 +17,7 @@ bool DNA::operator< (const DNA& other) const
 DNA DNA::crossover(DNA dna)
 {
 	DNA offspring = *this;
-	size_t split_idx = rand() % this->encoding.length();
+	size_t split_idx = rand() % min(this->encoding.length(), dna.encoding.length());
 	int which = rand() % 2;
 	string swap;
 
@@ -39,6 +40,16 @@ void DNA::mutate()
 	cout << "Mutation:\t";
 	size_t flip_idx = rand() % this->encoding.length();
 	this->encoding[flip_idx] = util::random::ascii();
+    
+    if (rand() % 2) {
+        string new_encoding(encoding.begin(), encoding.end() - 1);
+        if (rand() % 2)
+            this->encoding = new_encoding;
+    } else {
+        if (rand() % 2)
+            this->encoding += util::random::ascii();
+    }
+    
 	cout << this->encoding << endl << endl;
 }
 
@@ -68,4 +79,5 @@ unsigned DNA::get_fitness()
 void DNA::rate_fitness(string target)
 {
 	this->fitness = damerau_levenshtein_distance(this->encoding, target);
+    this->fitness += abs((long) (target.length() - this->encoding.length()));
 }
